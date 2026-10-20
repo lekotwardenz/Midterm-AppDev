@@ -1,0 +1,178 @@
+@page "/experiences"
+
+<PageTitle>Curated Experiences - Atlas Escapes</PageTitle>
+
+<main class="tourism-layout">
+    <header class="navbar">
+        <div class="nav-group left-links">
+            <!-- Links to Home.razor -->
+            <a href="/">HOME</a> 
+            <span class="dot-separator">•</span>
+            <!-- Links to Experiences.razor -->
+            <a href="/experiences">EXPERIENCES</a>
+        </div>
+        
+        <div class="nav-brand">
+            <!-- Clicking the logo also goes back home -->
+            <a href="/"><h1>Atlas Escapes</h1></a>
+        </div>
+
+        <div class="nav-group right-links">
+            <!-- Links to About.razor -->
+            <a href="/about">ABOUT</a>
+            <span class="dot-separator">•</span>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </header>
+    
+    <!-- Inner Page Hero -->
+    <section class="inner-hero bg-experiences-hero">
+        <div class="hero-overlay">
+            <h1 class="animate-up">Curated Experiences</h1>
+            <p class="animate-up delay-1">Find the perfect journey tailored to your travel style.</p>
+        </div>
+    </section>
+
+    <!-- Filter Bar (Visual Only) -->
+    <div class="filter-bar animate-up delay-2">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Adventure</button>
+        <button class="filter-btn">Cultural</button>
+        <button class="filter-btn">Relaxation</button>
+        <button class="filter-btn">Wildlife</button>
+    </div>
+
+    <!-- Tour Packages Grid -->
+    <section class="packages-section section-padding bg-light">
+        <div class="packages-grid">
+            <!-- Package 1 -->
+            <div class="package-card animate-scale">
+                <div class="package-img bg-pkg-japan">
+                    <div class="pkg-tag">Cultural</div>
+                </div>
+                <div class="package-content">
+                    <div class="pkg-meta">
+                        <span>⏱️ 10 Days</span>
+                        <span>📍 Japan</span>
+                    </div>
+                    <h3>The Golden Route</h3>
+                    <p>Travel from the neon streets of Tokyo to the historic temples of Kyoto via the bullet train.</p>
+                    <div class="pkg-footer">
+                        <div class="price">From <strong>$2,499</strong></div>
+                        <button class="btn-primary">View Itinerary</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package 2 -->
+            <div class="package-card animate-scale delay-1">
+                <div class="package-img bg-pkg-swiss">
+                    <div class="pkg-tag">Adventure</div>
+                </div>
+                <div class="package-content">
+                    <div class="pkg-meta">
+                        <span>⏱️ 7 Days</span>
+                        <span>📍 Switzerland</span>
+                    </div>
+                    <h3>Alpine Explorer</h3>
+                    <p>Hike through breathtaking valleys, ride the Glacier Express, and stay in premium mountain lodges.</p>
+                    <div class="pkg-footer">
+                        <div class="price">From <strong>$3,150</strong></div>
+                        <button class="btn-primary">View Itinerary</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Package 3 -->
+            <div class="package-card animate-scale delay-2">
+                <div class="package-img bg-pkg-maldives">
+                    <div class="pkg-tag">Relaxation</div>
+                </div>
+                <div class="package-content">
+                    <div class="pkg-meta">
+                        <span>⏱️ 5 Days</span>
+                        <span>📍 Maldives</span>
+                    </div>
+                    <h3>Overwater Paradise</h3>
+                    <p>Unwind in a private overwater bungalow with direct access to pristine coral reefs and turquoise waters.</p>
+                    <div class="pkg-footer">
+                        <div class="price">From <strong>$4,200</strong></div>
+                        <button class="btn-primary">View Itinerary</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <!-- Footer content remains exactly the same as previous step -->
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h5>Information</h5>
+                <ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Travel Visas</a></li>
+                    <li><a href="#">Insurance</a></li>
+                    <li><a href="#">General enquiries</a></li>
+                    <li><a href="#">Booking conditions</a></li>
+                    <li><a href="#">Privacy policy</a></li>
+                    <li><a href="#">Refund policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Experiences</h5>
+                <ul>
+                    <li><a href="#">Northern Lights</a></li>
+                    <li><a href="#">African Safari</a></li>
+                    <li><a href="#">European Rail</a></li>
+                    <li><a href="#">Island Hopping</a></li>
+                    <li><a href="#">Culinary Tours</a></li>
+                    <li><a href="#">Ancient Ruins</a></li>
+                    <li><a href="#">Mountain Trekking</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Travel Styles</h5>
+                <ul>
+                    <li><a href="#">Solo Travel</a></li>
+                    <li><a href="#">Honeymoons</a></li>
+                    <li><a href="#">Family Escapes</a></li>
+                    <li><a href="#">Backpacking</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h5>Popular global destinations</h5>
+                <div class="destinations-split">
+                    <ul>
+                        <li><a href="#">Paris, France</a></li>
+                        <li><a href="#">Tokyo, Japan</a></li>
+                        <li><a href="#">Rome, Italy</a></li>
+                        <li><a href="#">Cape Town, SA</a></li>
+                        <li><a href="#">Banff, Canada</a></li>
+                        <li><a href="#">Bali, Indonesia</a></li>
+                        <li><a href="#">Cairo, Egypt</a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#">Reykjavik, Iceland</a></li>
+                        <li><a href="#">Cusco, Peru</a></li>
+                        <li><a href="#">Sydney, Australia</a></li>
+                        <li><a href="#">Seoul, South Korea</a></li>
+                        <li><a href="#">Dubai, UAE</a></li>
+                        <li><a href="#">Auckland, NZ</a></li>
+                        <li><a href="#">New York, USA</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-col contact-info">
+                <p>Phone: +1 (800) 555-0199</p>
+                <p>Email: hello@atlasescapes.com</p>
+                <br />
+                <p><strong>Headquarters</strong></p>
+                <p>420 Global Plaza,</p>
+                <p>International District,</p>
+                <p>London - EC1A 1BB,</p>
+                <p>United Kingdom</p>
+            </div>
+        </div>
+    </footer>
+</main>

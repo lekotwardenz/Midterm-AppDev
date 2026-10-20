@@ -1,0 +1,567 @@
+/* Core Styling & Variables */
+.tourism-layout {
+    --color-primary: #0277bd;      /* Deep Ocean Blue for main buttons */
+    --color-primary-hover: #01579b; /* Darker Blue for hover states */
+    --color-accent: #00a8cc;       /* Vibrant Cerulean for icons */
+    --color-accent-hover: #008ba8;
+    --text-dark: #1e293b;          /* Slate Dark */
+    --text-muted: #64748b;         /* Slate Muted */
+    --bg-light: #f0f8ff;           /* Alice Blue (Very soft icy blue) */
+    --bg-dark: #0a192f;            /* Rich Navy Blue for Footer */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+}
+
+/* Base Keyframe Animations for Page Load */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =========================================
+   REAL IMAGE BACKGROUNDS (Unsplash URLs)
+========================================= */
+.bg-hero, .idea-card, .main-img, .thumb, .contact-banner {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 1. Hero & Contact Backgrounds */
+.bg-hero {
+    /* Tropical/Global coast view with a slight dark overlay to make text pop */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1920&q=80');
+}
+
+.bg-contact {
+    /* Airplane window view of clouds */
+    background-image: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1920&q=80');
+}
+
+/* 2. Vacation Ideas Cards */
+.bg-idea-alpine {
+    background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80');
+}
+.bg-idea-safari {
+    background-image: url('https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=600&q=80');
+}
+.bg-idea-city {
+    background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80'); /* Paris */
+}
+
+/* 3. Trending Locations Galleries */
+/* Location 1: The Alpine Lodge */
+.bg-loc1-main { background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600&q=80'); }
+.bg-loc1-t1 { background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=300&q=80'); }
+.bg-loc1-t2 { background-image: url('https://images.unsplash.com/photo-1542224566-6e85f2e6772f?auto=format&fit=crop&w=300&q=80'); }
+.bg-loc1-t3 { background-image: url('https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=300&q=80'); }
+
+/* Location 2: Kyoto Zen Retreat */
+.bg-loc2-main { background-image: url('https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&q=80'); }
+.bg-loc2-t1 { background-image: url('https://images.unsplash.com/photo-1545569341-9eb8b3097314?auto=format&fit=crop&w=300&q=80'); }
+.bg-loc2-t2 { background-image: url('https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?auto=format&fit=crop&w=300&q=80'); }
+.bg-loc2-t3 { background-image: url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=300&q=80'); }
+
+/* Location 3: Riad Al-Fassi (Morocco) */
+.bg-loc3-main { background-image: url('https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=600&q=80'); }
+.bg-loc3-t1 { background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=300&q=80'); }
+.bg-loc3-t2 { background-image: url('https://images.unsplash.com/photo-1558292850-2f98e7275005?auto=format&fit=crop&w=300&q=80'); }
+.bg-loc3-t3 { background-image: url('https://images.unsplash.com/photo-1542157813-f6617dd95b95?auto=format&fit=crop&w=300&q=80'); }
+
+/* Location 4: Caldera Infinity Villa (Santorini) */
+.bg-loc4-main { background-image: url('https://images.unsplash.com/photo-1613553507747-5f8d62ad5904?auto=format&fit=crop&w=600&q=80'); }
+.bg-loc4-t1 { background-image: url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac542?auto=format&fit=crop&w=300&q=80'); }
+.bg-loc4-t2 { background-image: url('https://images.unsplash.com/photo-1516483638261-f40af5ff096e?auto=format&fit=crop&w=300&q=80'); }
+.bg-loc4-t3 { background-image: url('https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?auto=format&fit=crop&w=300&q=80'); }
+
+h1, h2, h3, h4, h5 { margin: 0; }
+a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: color 0.3s ease-in-out; 
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    background-color: white;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.nav-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.nav-group a:hover {
+    color: var(--color-primary); /* Changed hover to blue */
+}
+
+.dot-separator {
+    color: #cbd5e1;
+    font-size: 0.75rem;
+}
+
+.nav-brand h1 {
+    font-family: 'Georgia', serif;
+    font-size: 2.2rem;
+    font-style: italic;
+    color: var(--color-primary-hover); /* Tinted the logo slightly blue */
+    transition: transform 0.4s ease-in-out;
+}
+
+.nav-brand:hover h1 {
+    transform: scale(1.05);
+}
+
+/* Hero Section */
+.hero-section {
+    height: 60vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h2 {
+    color: white;
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    opacity: 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Overlapping Search Bar */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: -35px;
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+}
+
+.search-bar {
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-shadow: 0 10px 25px rgba(2, 119, 189, 0.1); /* Subtle blue shadow */
+    gap: 1.5rem;
+    border-radius: 4px;
+    transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.search-bar:hover {
+    box-shadow: 0 15px 35px rgba(2, 119, 189, 0.15);
+    transform: translateY(-2px);
+}
+
+.search-input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 0.25rem;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.search-input:focus-within {
+    border-color: var(--color-primary);
+}
+
+.search-input input {
+    border: none;
+    outline: none;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+}
+
+.btn-search {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.btn-search:hover {
+    transform: scale(1.15);
+    background-color: var(--color-primary-hover);
+}
+
+/* Shared Section Styles */
+.section-padding { padding: 5rem 2rem; }
+.bg-light { background-color: var(--bg-light); }
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-header h3 {
+    font-family: 'Georgia', serif;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary-hover);
+}
+
+.divider {
+    color: #93c5fd; /* Light blue divider */
+    font-size: 0.6rem;
+    letter-spacing: 5px;
+}
+
+/* Vacation Ideas Grid */
+.ideas-grid {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.idea-card {
+    width: 350px;
+    height: 250px;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    animation: fadeInScale 0.8s ease-out forwards;
+}
+
+.idea-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(2, 119, 189, 0.2);
+}
+
+.idea-label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: var(--color-primary-hover);
+    padding: 1rem 2rem;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+    white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+.idea-card:hover .idea-label {
+    transform: translateX(-50%) translateY(-5px);
+    padding: 1.1rem 2.2rem;
+}
+
+/* Recent Locations Grid */
+.locations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.location-card {
+    display: flex;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+    cursor: pointer;
+}
+
+.location-card:hover {
+    transform: scale(1.03) translateY(-5px);
+    box-shadow: 0 20px 40px rgba(2, 119, 189, 0.1);
+}
+
+.location-gallery {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-img {
+    height: 180px;
+    width: 100%;
+}
+
+.thumb-row {
+    display: flex;
+    height: 60px;
+}
+
+.thumb {
+    flex: 1;
+    border: 1px solid white;
+    transition: filter 0.3s ease-in-out;
+}
+
+.thumb:hover {
+    filter: brightness(1.2);
+}
+
+.location-info {
+    width: 55%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.location-info h4 {
+    font-family: 'Georgia', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease-in-out;
+}
+
+.location-card:hover .location-info h4 {
+    color: var(--color-primary);
+}
+
+.location-info p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.amenities {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1rem;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    transform: scale(1.1);
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 4px 10px rgba(2, 119, 189, 0.3);
+}
+
+/* Why We Are Different */
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.feature-item { 
+    flex: 1; 
+    transition: transform 0.4s ease-in-out;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin: 0 auto 1.5rem auto;
+    transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out;
+}
+
+.feature-item:hover .feature-icon {
+    transform: scale(1.15) rotate(5deg);
+    background-color: var(--color-accent-hover);
+}
+
+.feature-item h4 {
+    font-family: 'Georgia', serif;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary-hover);
+}
+
+.feature-item p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Contact Banner */
+.contact-banner {
+    height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.contact-form-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 2rem;
+}
+
+.contact-box {
+    background: white;
+    padding: 2.5rem;
+    width: 350px;
+    box-shadow: 0 10px 25px rgba(2, 119, 189, 0.15);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+}
+
+.contact-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 35px rgba(2, 119, 189, 0.25);
+}
+
+.contact-box h3 {
+    font-family: 'Georgia', serif;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary-hover);
+}
+
+.contact-box input, .contact-box textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #cbd5e1;
+    padding: 0.75rem 0;
+    margin-bottom: 1rem;
+    outline: none;
+    font-family: inherit;
+    resize: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.contact-box input:focus, .contact-box textarea:focus {
+    border-color: var(--color-primary);
+}
+
+.btn-primary-pill {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.btn-primary-pill:hover {
+    transform: scale(1.08);
+    background-color: var(--color-primary-hover);
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--bg-dark);
+    color: white;
+    padding: 4rem 2rem;
+}
+
+.footer-grid {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 2rem;
+}
+
+.footer-col h5 {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-col a, .footer-col p {
+    color: #94a3b8; /* Slate blue-gray text */
+    font-size: 0.85rem;
+}
+
+.footer-col a:hover { 
+    color: var(--color-accent); /* Cyan hover on footer links */
+}
+
+.destinations-split {
+    display: flex;
+    gap: 2rem;
+}
+
+.contact-info {
+    text-align: right;
+}
+
+.contact-info p {
+    margin-bottom: 0.25rem;
+}
