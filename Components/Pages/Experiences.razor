@@ -1,116 +1,180 @@
 @page "/experiences"
+@rendermode InteractiveServer
 
 <PageTitle>Curated Experiences - Atlas Escapes</PageTitle>
 
 <main class="tourism-layout">
+    <!-- Shared Header -->
     <header class="navbar">
         <div class="nav-group left-links">
-            <!-- Links to Home.razor -->
             <a href="/">HOME</a> 
             <span class="dot-separator">•</span>
-            <!-- Links to Experiences.razor -->
             <a href="/experiences">EXPERIENCES</a>
         </div>
         
         <div class="nav-brand">
-            <!-- Clicking the logo also goes back home -->
             <a href="/"><h1>Atlas Escapes</h1></a>
         </div>
 
         <div class="nav-group right-links">
-            <!-- Links to About.razor -->
             <a href="/about">ABOUT</a>
             <span class="dot-separator">•</span>
             <a href="#contact">CONTACT</a>
         </div>
     </header>
-    
+
     <!-- Inner Page Hero -->
     <section class="inner-hero bg-experiences-hero">
         <div class="hero-overlay">
             <h1 class="animate-up">Curated Experiences</h1>
-            <p class="animate-up delay-1">Find the perfect journey tailored to your travel style.</p>
+            <p class="animate-up delay-1">Explore, filter, and plan your next global adventure.</p>
         </div>
     </section>
 
-    <!-- Filter Bar (Visual Only) -->
-    <div class="filter-bar animate-up delay-2">
-        <button class="filter-btn active">All</button>
-        <button class="filter-btn">Adventure</button>
-        <button class="filter-btn">Cultural</button>
-        <button class="filter-btn">Relaxation</button>
-        <button class="filter-btn">Wildlife</button>
-    </div>
+    <!-- Interactive Control Bar -->
+    <section class="controls-section">
+        <div class="controls-container">
+            <!-- Live Search Bar -->
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" placeholder="Search destination or title..." @bind="SearchQuery" @bind:event="oninput" />
+            </div>
+
+            <!-- Price & Duration Sorting -->
+            <div class="sort-box">
+                <label for="sort">Sort by:</label>
+                <select id="sort" @onchange="OnSortChanged">
+                    <option value="featured">Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="duration">Duration</option>
+                </select>
+            </div>
+
+            <!-- Saved Wishlist Counter -->
+            <div class="wishlist-badge">
+                ❤️ Saved: <strong>@WishlistCount</strong>
+            </div>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="filter-bar">
+            @foreach (var category in Categories)
+            {
+                <button class="filter-btn @(SelectedCategory == category ? "active" : "")" 
+                        @onclick="() => SelectCategory(category)">
+                    @category
+                </button>
+            }
+        </div>
+    </section>
 
     <!-- Tour Packages Grid -->
     <section class="packages-section section-padding bg-light">
-        <div class="packages-grid">
-            <!-- Package 1 -->
-            <div class="package-card animate-scale">
-                <div class="package-img bg-pkg-japan">
-                    <div class="pkg-tag">Cultural</div>
-                </div>
-                <div class="package-content">
-                    <div class="pkg-meta">
-                        <span>⏱️ 10 Days</span>
-                        <span>📍 Japan</span>
-                    </div>
-                    <h3>The Golden Route</h3>
-                    <p>Travel from the neon streets of Tokyo to the historic temples of Kyoto via the bullet train.</p>
-                    <div class="pkg-footer">
-                        <div class="price">From <strong>$2,499</strong></div>
-                        <button class="btn-primary">View Itinerary</button>
-                    </div>
-                </div>
+        <div class="container">
+            <div class="results-meta">
+                Showing <strong>@FilteredTours.Count</strong> experiences
             </div>
 
-            <!-- Package 2 -->
-            <div class="package-card animate-scale delay-1">
-                <div class="package-img bg-pkg-swiss">
-                    <div class="pkg-tag">Adventure</div>
+            @if (FilteredTours.Count == 0)
+            {
+                <div class="no-results">
+                    <h3>No matching experiences found</h3>
+                    <p>Try adjusting your search query or filter criteria.</p>
+                    <button class="btn-primary" @onclick="ResetFilters">Reset Filters</button>
                 </div>
-                <div class="package-content">
-                    <div class="pkg-meta">
-                        <span>⏱️ 7 Days</span>
-                        <span>📍 Switzerland</span>
-                    </div>
-                    <h3>Alpine Explorer</h3>
-                    <p>Hike through breathtaking valleys, ride the Glacier Express, and stay in premium mountain lodges.</p>
-                    <div class="pkg-footer">
-                        <div class="price">From <strong>$3,150</strong></div>
-                        <button class="btn-primary">View Itinerary</button>
-                    </div>
+            }
+            else
+            {
+                <div class="packages-grid">
+                    @foreach (var tour in FilteredTours)
+                    {
+                        <div class="package-card animate-scale">
+                            <div class="package-img @tour.ImageClass">
+                                <span class="pkg-tag">@tour.Category</span>
+                                <button class="wishlist-btn @(tour.IsFavorite ? "liked" : "")" 
+                                        @onclick="() => ToggleWishlist(tour)" 
+                                        title="Save to Wishlist">
+                                    ♥
+                                </button>
+                            </div>
+                            <div class="package-content">
+                                <div class="pkg-meta">
+                                    <span>⏱️ @tour.DurationDays Days</span>
+                                    <span>📍 @tour.Country</span>
+                                </div>
+                                <h3>@tour.Title</h3>
+                                <p>@tour.Description</p>
+                                <div class="pkg-footer">
+                                    <div class="price">From <strong>$@tour.Price.ToString("N0")</strong></div>
+                                    <button class="btn-primary" @onclick="() => OpenModal(tour)">View Itinerary</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
-            </div>
-
-            <!-- Package 3 -->
-            <div class="package-card animate-scale delay-2">
-                <div class="package-img bg-pkg-maldives">
-                    <div class="pkg-tag">Relaxation</div>
-                </div>
-                <div class="package-content">
-                    <div class="pkg-meta">
-                        <span>⏱️ 5 Days</span>
-                        <span>📍 Maldives</span>
-                    </div>
-                    <h3>Overwater Paradise</h3>
-                    <p>Unwind in a private overwater bungalow with direct access to pristine coral reefs and turquoise waters.</p>
-                    <div class="pkg-footer">
-                        <div class="price">From <strong>$4,200</strong></div>
-                        <button class="btn-primary">View Itinerary</button>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </section>
 
+    <!-- Tour Detail & Price Calculator Modal -->
+    @if (SelectedTour != null)
+    {
+        <div class="modal-backdrop" @onclick="CloseModal">
+            <div class="modal-card" @onclick:stopPropagation="true">
+                <button class="modal-close" @onclick="CloseModal">×</button>
+                
+                <div class="modal-header @SelectedTour.ImageClass">
+                    <span class="modal-tag">@SelectedTour.Category</span>
+                    <h2>@SelectedTour.Title</h2>
+                    <p>📍 @SelectedTour.Country • ⏱️ @SelectedTour.DurationDays Days</p>
+                </div>
+
+                <div class="modal-body">
+                    <h4>Included Tour Highlights</h4>
+                    <ul class="highlights-list">
+                        @foreach (var highlight in SelectedTour.Highlights)
+                        {
+                            <li>✓ @highlight</li>
+                        }
+                    </ul>
+
+                    <hr />
+
+                    <h4>Plan Your Reservation</h4>
+                    <div class="booking-calculator">
+                        <div class="calc-row">
+                            <label>Number of Guests:</label>
+                            <input type="number" min="1" max="10" @bind="GuestCount" @bind:event="oninput" />
+                        </div>
+                        <div class="calc-row total-row">
+                            <span>Estimated Total:</span>
+                            <span class="total-price">$@((SelectedTour.Price * GuestCount).ToString("N0"))</span>
+                        </div>
+                    </div>
+
+                    @if (IsBookingConfirmed)
+                    {
+                        <div class="booking-alert success">
+                            🎉 Success! Reservation draft saved for @GuestCount guest(s).
+                        </div>
+                    }
+                    else
+                    {
+                        <button class="btn-primary-pill full-width" @onclick="ConfirmBooking">Confirm Reservation Draft</button>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- Shared Footer -->
     <footer class="site-footer">
-        <!-- Footer content remains exactly the same as previous step -->
         <div class="footer-grid">
             <div class="footer-col">
                 <h5>Information</h5>
                 <ul>
-                    <li><a href="#">About us</a></li>
+                    <li><a href="/about">About us</a></li>
                     <li><a href="#">Travel Visas</a></li>
                     <li><a href="#">Insurance</a></li>
                     <li><a href="#">General enquiries</a></li>

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DensingMidterms")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a43544e822bc1f9623e8dc0919fe8e384a69c75")]
 [assembly: System.Reflection.AssemblyProductAttribute("DensingMidterms")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DensingMidterms")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

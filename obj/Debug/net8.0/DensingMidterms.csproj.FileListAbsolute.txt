@@ -29,3 +29,4 @@ C:\Users\L23Y16W18\Documents\midterms\DensingMidterms\obj\Debug\net8.0\ref\Densi
 C:\Users\L23Y16W18\Documents\midterms\DensingMidterms\obj\Debug\net8.0\scopedcss\Components\Pages\Home.razor.rz.scp.css
 C:\Users\L23Y16W18\Documents\midterms\DensingMidterms\obj\Debug\net8.0\scopedcss\Components\Pages\Experiences.razor.rz.scp.css
 C:\Users\L23Y16W18\Documents\midterms\DensingMidterms\obj\Debug\net8.0\scopedcss\Components\Pages\About.razor.rz.scp.css
+C:\Users\L23Y16W18\Documents\midterms\DensingMidterms\obj\Debug\net8.0\DensingMidterms.sourcelink.json
