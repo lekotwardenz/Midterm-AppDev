@@ -1,91 +1,89 @@
 ﻿@page "/"
+@rendermode InteractiveServer
+@using DensingMidterms.Models
 
-<PageTitle>Atlas Escapes - Global Journeys</PageTitle>
+<PageTitle>Atlas Escapes - Curated Luxury Travel</PageTitle>
 
 <main class="tourism-layout">
     <!-- Top Navigation -->
     <header class="navbar">
         <div class="nav-group left-links">
-            <!-- Links to Home.razor -->
-            <a href="/">HOME</a> 
+            <a href="/" class="active-link">HOME</a>
             <span class="dot-separator">•</span>
-            <!-- Links to Experiences.razor -->
-            <a href="/experiences">EXPERIENCES</a>
+            <a href="/booking">BOOKING</a>
         </div>
-        
+
         <div class="nav-brand">
-            <!-- Clicking the logo also goes back home -->
             <a href="/"><h1>Atlas Escapes</h1></a>
         </div>
 
         <div class="nav-group right-links">
-            <!-- Links to About.razor -->
-            <a href="/about">ABOUT</a>
+            <a href="#destinations">DESTINATIONS</a>
             <span class="dot-separator">•</span>
-            <a href="#contact">CONTACT</a>
+            <a href="/booking#contact">CONTACT</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Banner -->
     <section class="hero-section bg-hero">
         <div class="hero-content">
-            <h2>EXPLORE EVERY CORNER</h2>
+            <h2>DISCOVER THE EXTRAORDINARY</h2>
         </div>
     </section>
 
-    <!-- Overlapping Search Bar -->
+    <!-- Floating Search Bar -->
     <div class="search-container">
         <div class="search-bar">
             <div class="search-input">
-                <span class="icon">📍</span>
-                <input type="text" placeholder="Tokyo, Japan" />
+                <span>📍</span>
+                <input type="text" placeholder="Where to?" @bind="searchDestination" />
             </div>
             <div class="search-input">
-                <span class="icon">📅</span>
-                <input type="text" placeholder="Check-in" />
+                <span>📅</span>
+                <input type="text" placeholder="Check-in" @bind="searchCheckIn" />
             </div>
             <div class="search-input">
-                <span class="icon">📅</span>
-                <input type="text" placeholder="Check-out" />
+                <span>📅</span>
+                <input type="text" placeholder="Check-out" @bind="searchCheckOut" />
             </div>
             <div class="search-input">
-                <span class="icon">👤</span>
-                <input type="text" placeholder="Guests" />
+                <span>👤</span>
+                <input type="number" min="1" max="20" placeholder="Guests" @bind="searchGuests" />
             </div>
-            <button class="btn-search">→</button>
+            <button type="button" class="btn-search" @onclick="SearchAndBook" title="Search Tours">→</button>
         </div>
     </div>
 
-    <!-- Latest Vacation Ideas -->
-    <section class="vacation-ideas section-padding">
+    <!-- Travel Ideas Section -->
+    <section class="section-padding">
         <div class="section-header">
-            <h3>See latest vacation ideas</h3>
+            <h3>Travel Ideas</h3>
             <div class="divider"><span>♦</span><span>♦</span><span>♦</span></div>
+            <p class="section-subtitle">Handpicked journeys designed around your pace, curiosity, and comfort.</p>
         </div>
 
         <div class="ideas-grid">
-            <div class="idea-card bg-idea-alpine">
-                <div class="idea-label">Alpine Retreats</div>
+            <div class="idea-card bg-idea-alpine" @onclick='() => Navigation.NavigateTo("/booking?search=Alpine")'>
+                <div class="idea-label">Alpine Escapes</div>
             </div>
-            <div class="idea-card bg-idea-safari">
-                <div class="idea-label">Safari Adventures</div>
+            <div class="idea-card bg-idea-safari" @onclick='() => Navigation.NavigateTo("/booking?search=Safari")'>
+                <div class="idea-label">Wildlife Safaris</div>
             </div>
-            <div class="idea-card bg-idea-city">
-                <div class="idea-label">Historic City Breaks</div>
+            <div class="idea-card bg-idea-city" @onclick='() => Navigation.NavigateTo("/booking?search=Kyoto")'>
+                <div class="idea-label">Cultural Trails</div>
             </div>
         </div>
     </section>
 
-    <!-- Recent Holiday Locations -->
-    <section class="recent-locations section-padding bg-light">
+    <!-- Featured Destinations -->
+    <section id="destinations" class="section-padding bg-light">
         <div class="section-header">
-            <h3>Trending global locations</h3>
+            <h3>Featured Destinations</h3>
             <div class="divider"><span>♦</span><span>♦</span><span>♦</span></div>
         </div>
 
         <div class="locations-grid">
-            <!-- Card 1: Mountain/Snow -->
-            <div class="location-card">
+            <div class="location-card" @onclick="() => GoToBooking(1)">
                 <div class="location-gallery">
                     <div class="main-img bg-loc1-main"></div>
                     <div class="thumb-row">
@@ -95,19 +93,17 @@
                     </div>
                 </div>
                 <div class="location-info">
-                    <h4>The Alpine Lodge</h4>
-                    <p>Nestled in the shadow of the Swiss Alps, this luxury cabin offers ski-in/ski-out access, a heated stone hearth, and breathtaking mountain vistas.</p>
+                    <h4>Zermatt, Switzerland</h4>
+                    <p>Private ski-in/ski-out alpine chalets overlooking the Matterhorn with guided glacier excursions.</p>
                     <div class="amenities">
-                        <span>🛏️ 3</span>
-                        <span>🛁 2</span>
-                        <span>🏔️ Mountain View</span>
+                        <span>🏔️ Guided Treks</span>
+                        <span>🚂 Glacier Express</span>
                     </div>
-                    <button class="btn-primary">BOOK NOW</button>
+                    <button type="button" class="btn-primary">EXPLORE TOUR</button>
                 </div>
             </div>
 
-            <!-- Card 2: Cultural/City -->
-            <div class="location-card">
+            <div class="location-card" @onclick="() => GoToBooking(2)">
                 <div class="location-gallery">
                     <div class="main-img bg-loc2-main"></div>
                     <div class="thumb-row">
@@ -117,19 +113,17 @@
                     </div>
                 </div>
                 <div class="location-info">
-                    <h4>Kyoto Zen Retreat</h4>
-                    <p>A beautifully restored machiya townhouse in the heart of Japan. Steps away from ancient temples, traditional tea houses, and tranquil bamboo forests.</p>
+                    <h4>Kyoto, Japan</h4>
+                    <p>Restored wooden machiya townhouses, private dawn temple walks, and traditional tea ceremonies.</p>
                     <div class="amenities">
-                        <span>🛏️ 2</span>
-                        <span>🛁 1</span>
-                        <span>🎋 Garden</span>
+                        <span>🍵 Tea Ceremony</span>
+                        <span>⛩️ Private Guides</span>
                     </div>
-                    <button class="btn-primary">BOOK NOW</button>
+                    <button type="button" class="btn-primary">EXPLORE TOUR</button>
                 </div>
             </div>
 
-            <!-- Card 3: Desert/Architecture -->
-            <div class="location-card">
+            <div class="location-card" @onclick="() => GoToBooking(3)">
                 <div class="location-gallery">
                     <div class="main-img bg-loc3-main"></div>
                     <div class="thumb-row">
@@ -139,19 +133,17 @@
                     </div>
                 </div>
                 <div class="location-info">
-                    <h4>Riad Al-Fassi</h4>
-                    <p>Experience the vibrant heart of Marrakech, Morocco. Featuring a traditional central courtyard, intricate mosaic tiles, and a rooftop terrace overlooking the Medina.</p>
+                    <h4>Marrakech, Morocco</h4>
+                    <p>Secluded courtyard riads in the Medina paired with luxury stargazing camps in the Sahara.</p>
                     <div class="amenities">
-                        <span>🛏️ 4</span>
-                        <span>🛁 4</span>
-                        <span>🕌 City Center</span>
+                        <span>🐪 Sahara Camp</span>
+                        <span>🍲 Culinary Walks</span>
                     </div>
-                    <button class="btn-primary">BOOK NOW</button>
+                    <button type="button" class="btn-primary">EXPLORE TOUR</button>
                 </div>
             </div>
 
-            <!-- Card 4: Coastal/Mediterranean -->
-            <div class="location-card">
+            <div class="location-card" @onclick="() => GoToBooking(4)">
                 <div class="location-gallery">
                     <div class="main-img bg-loc4-main"></div>
                     <div class="thumb-row">
@@ -161,127 +153,86 @@
                     </div>
                 </div>
                 <div class="location-info">
-                    <h4>Caldera Infinity Villa</h4>
-                    <p>Iconic whitewashed architecture in Santorini, Greece. Enjoy private infinity pools that seemingly drop straight into the azure waters of the Aegean Sea.</p>
+                    <h4>Santorini, Greece</h4>
+                    <p>Cliffside caldera suites with private sunset catamaran sails and volcanic vineyard tastings.</p>
                     <div class="amenities">
-                        <span>🛏️ 2</span>
-                        <span>🛁 2</span>
-                        <span>🌊 Ocean View</span>
+                        <span>⛵ Private Yacht</span>
+                        <span>🍷 Wine Tasting</span>
                     </div>
-                    <button class="btn-primary">BOOK NOW</button>
+                    <button type="button" class="btn-primary">EXPLORE TOUR</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why We Are Different -->
-    <section class="features-section section-padding">
+    <!-- Direct CTA Banner to Booking Page -->
+    <section class="section-padding">
+        <div class="cta-banner-card">
+            <div class="cta-text">
+                <span class="cta-badge">CUSTOMIZE &amp; INQUIRE</span>
+                <h4>Ready to Build Your Itinerary?</h4>
+                <p>Compare packages, calculate group estimates, save booking drafts, or send our travel concierge a direct inquiry on our Booking Planner page.</p>
+            </div>
+            <a href="/booking" class="btn-primary-large">GO TO BOOKING PLANNER →</a>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section-padding bg-light">
         <div class="section-header">
-            <h3>Why travel with us</h3>
+            <h3>Why Atlas Escapes</h3>
             <div class="divider"><span>♦</span><span>♦</span><span>♦</span></div>
         </div>
 
         <div class="features-grid">
             <div class="feature-item">
-                <div class="feature-icon bg-accent">🌍</div>
-                <h4>Global Expertise</h4>
-                <p>From the bustling streets of Tokyo to the remote peaks of Patagonia, our global network ensures you get authentic experiences no matter which continent you choose.</p>
+                <div class="feature-icon">✦</div>
+                <h4>Bespoke Itineraries</h4>
+                <p>Every route is tailored around your schedule, interests, and preferred travel rhythm.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon bg-accent">🗺️</div>
-                <h4>Tailored Itineraries</h4>
-                <p>We don't do cookie-cutter tours. Every journey is customized to your pace, blending iconic landmarks with hidden local gems off the beaten path.</p>
+                <div class="feature-icon">🧭</div>
+                <h4>Local Specialists</h4>
+                <p>Partnered directly with vetted local hosts, historians, and expedition leaders.</p>
             </div>
             <div class="feature-item">
-                <div class="feature-icon bg-accent">🛡️</div>
-                <h4>24/7 Support</h4>
-                <p>Cross time zones with confidence. Whether you need a last-minute dinner reservation in Rome or flight assistance in Dubai, our concierge is always awake.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Banner -->
-    <section class="contact-banner bg-contact">
-        <div class="contact-form-container">
-            <div class="contact-box">
-                <h3>Start planning</h3>
-                <input type="text" placeholder="Your name" />
-                <input type="email" placeholder="Email" />
-                <textarea placeholder="Where do you want to go?" rows="3"></textarea>
-                <button class="btn-primary-pill">SEND</button>
+                <div class="feature-icon">🛡️</div>
+                <h4>24/7 Concierge</h4>
+                <p>Seamless ground support from airport arrival through every transfer and reservation.</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer class="site-footer">
-        <!-- Footer content remains exactly the same as previous step -->
         <div class="footer-grid">
             <div class="footer-col">
-                <h5>Information</h5>
+                <h5>Navigation</h5>
                 <ul>
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Travel Visas</a></li>
-                    <li><a href="#">Insurance</a></li>
-                    <li><a href="#">General enquiries</a></li>
-                    <li><a href="#">Booking conditions</a></li>
-                    <li><a href="#">Privacy policy</a></li>
-                    <li><a href="#">Refund policy</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/booking">Booking Planner</a></li>
+                    <li><a href="/booking#contact">Start Planning Inquiry</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h5>Experiences</h5>
-                <ul>
-                    <li><a href="#">Northern Lights</a></li>
-                    <li><a href="#">African Safari</a></li>
-                    <li><a href="#">European Rail</a></li>
-                    <li><a href="#">Island Hopping</a></li>
-                    <li><a href="#">Culinary Tours</a></li>
-                    <li><a href="#">Ancient Ruins</a></li>
-                    <li><a href="#">Mountain Trekking</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h5>Travel Styles</h5>
-                <ul>
-                    <li><a href="#">Solo Travel</a></li>
-                    <li><a href="#">Honeymoons</a></li>
-                    <li><a href="#">Family Escapes</a></li>
-                    <li><a href="#">Backpacking</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h5>Popular global destinations</h5>
+                <h5>Top Destinations</h5>
                 <div class="destinations-split">
                     <ul>
-                        <li><a href="#">Paris, France</a></li>
-                        <li><a href="#">Tokyo, Japan</a></li>
-                        <li><a href="#">Rome, Italy</a></li>
-                        <li><a href="#">Cape Town, SA</a></li>
-                        <li><a href="#">Banff, Canada</a></li>
-                        <li><a href="#">Bali, Indonesia</a></li>
-                        <li><a href="#">Cairo, Egypt</a></li>
+                        <li><a href="/booking?search=Switzerland">Switzerland</a></li>
+                        <li><a href="/booking?search=Japan">Japan</a></li>
+                        <li><a href="/booking?search=Morocco">Morocco</a></li>
                     </ul>
                     <ul>
-                        <li><a href="#">Reykjavik, Iceland</a></li>
-                        <li><a href="#">Cusco, Peru</a></li>
-                        <li><a href="#">Sydney, Australia</a></li>
-                        <li><a href="#">Seoul, South Korea</a></li>
-                        <li><a href="#">Dubai, UAE</a></li>
-                        <li><a href="#">Auckland, NZ</a></li>
-                        <li><a href="#">New York, USA</a></li>
+                        <li><a href="/booking?search=Greece">Greece</a></li>
+                        <li><a href="/booking?search=Tanzania">Tanzania</a></li>
+                        <li><a href="/booking?search=Chile">Chile</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-col contact-info">
-                <p>Phone: +1 (800) 555-0199</p>
-                <p>Email: hello@atlasescapes.com</p>
-                <br />
-                <p><strong>Headquarters</strong></p>
-                <p>420 Global Plaza,</p>
-                <p>International District,</p>
-                <p>London - EC1A 1BB,</p>
-                <p>United Kingdom</p>
+                <h5>Atlas Escapes</h5>
+                <p>concierge@atlasescapes.com</p>
+                <p>+1 (800) 555-0194</p>
             </div>
         </div>
     </footer>

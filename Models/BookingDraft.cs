@@ -1,11 +1,30 @@
+using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
+
 namespace DensingMidterms.Models
 {
-    public class BookingDraft
+    [Table("booking_drafts")]
+    public class BookingDraft : BaseModel
     {
-        public int TourId { get; set; }
+        [PrimaryKey("id", false)]
+        public long Id { get; set; }
+
+        [Column("tour_id")]
+        public long TourId { get; set; }
+
+        [Column("tour_title")]
         public string TourTitle { get; set; } = string.Empty;
+
+        [Column("guest_count")]
         public int GuestCount { get; set; } = 1;
+
+        [Column("total_price")]
         public decimal TotalPrice { get; set; }
-        public DateTime DraftCreated { get; set; } = DateTime.Now;
+
+        [Column("draft_created")]
+        public DateTime DraftCreated { get; set; } = DateTime.UtcNow;
+
+        [Column("deleted_at")]
+        public DateTime? DeletedAt { get; set; }
     }
 }

@@ -9,39 +9,43 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DensingMidterms
 build_property.RootNamespace = DensingMidterms
-build_property.ProjectDir = C:\Users\L23Y16W18\Documents\midterms\DensingMidterms\
+build_property.ProjectDir = C:\Users\L23Y16W18\Downloads\AppDev-Finals\Midterm-AppDev\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\L23Y16W18\Documents\midterms\DensingMidterms
+build_property.MSBuildProjectDirectory = C:\Users\L23Y16W18\Downloads\AppDev-Finals\Midterm-AppDev
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/L23Y16W18/Documents/midterms/DensingMidterms/Components/App.razor]
+[C:/Users/L23Y16W18/Downloads/AppDev-Finals/Midterm-AppDev/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/L23Y16W18/Documents/midterms/DensingMidterms/Components/Routes.razor]
+[C:/Users/L23Y16W18/Downloads/AppDev-Finals/Midterm-AppDev/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/L23Y16W18/Documents/midterms/DensingMidterms/Components/_Imports.razor]
+[C:/Users/L23Y16W18/Downloads/AppDev-Finals/Midterm-AppDev/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/L23Y16W18/Documents/midterms/DensingMidterms/Components/Layout/MainLayout.razor]
+[C:/Users/L23Y16W18/Downloads/AppDev-Finals/Midterm-AppDev/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-vh0iditjmt
 
-[C:/Users/L23Y16W18/Documents/midterms/DensingMidterms/Components/Pages/About.razor]
+[C:/Users/L23Y16W18/Downloads/AppDev-Finals/Midterm-AppDev/Components/Pages/About.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBYm91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-k9lwqn0l4g
 
-[C:/Users/L23Y16W18/Documents/midterms/DensingMidterms/Components/Pages/Experiences.razor]
+[C:/Users/L23Y16W18/Downloads/AppDev-Finals/Midterm-AppDev/Components/Pages/Booking.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xCb29raW5nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-xgyp50i11a
+
+[C:/Users/L23Y16W18/Downloads/AppDev-Finals/Midterm-AppDev/Components/Pages/Experiences.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFeHBlcmllbmNlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-njyzl0ifh7
 
-[C:/Users/L23Y16W18/Documents/midterms/DensingMidterms/Components/Pages/Home.razor]
+[C:/Users/L23Y16W18/Downloads/AppDev-Finals/Midterm-AppDev/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-1iznlku6ss

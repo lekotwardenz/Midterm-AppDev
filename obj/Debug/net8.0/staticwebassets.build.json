@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hiTM5L1Ey2Y5SnkWAOKL9zOQDeuT4RakO+cZ9AN1fL4=",
+  "Hash": "qK36XZhncIj5FJXckz5epmN7cjuG1YyaWV81KyYfbCo=",
   "Source": "DensingMidterms",
   "BasePath": "_content/DensingMidterms",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "DensingMidterms\\wwwroot",
       "Source": "DensingMidterms",
-      "ContentRoot": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\wwwroot\\",
       "BasePath": "_content/DensingMidterms",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\obj\\Debug\\net8.0\\scopedcss\\bundle\\DensingMidterms.styles.css",
+      "Identity": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\obj\\Debug\\net8.0\\scopedcss\\bundle\\DensingMidterms.styles.css",
       "SourceId": "DensingMidterms",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\obj\\Debug\\net8.0\\scopedcss\\bundle\\",
       "BasePath": "_content/DensingMidterms",
       "RelativePath": "DensingMidterms.styles.css",
       "AssetKind": "All",
@@ -33,13 +33,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\obj\\Debug\\net8.0\\scopedcss\\bundle\\DensingMidterms.styles.css"
+      "OriginalItemSpec": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\obj\\Debug\\net8.0\\scopedcss\\bundle\\DensingMidterms.styles.css"
     },
     {
-      "Identity": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\DensingMidterms.bundle.scp.css",
+      "Identity": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\DensingMidterms.bundle.scp.css",
       "SourceId": "DensingMidterms",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/DensingMidterms",
       "RelativePath": "DensingMidterms.bundle.scp.css",
       "AssetKind": "All",
@@ -52,13 +52,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\DensingMidterms.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\DensingMidterms.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\wwwroot\\app.css",
+      "Identity": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\wwwroot\\app.css",
       "SourceId": "DensingMidterms",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\wwwroot\\",
       "BasePath": "_content/DensingMidterms",
       "RelativePath": "app.css",
       "AssetKind": "All",
@@ -74,10 +74,10 @@
       "OriginalItemSpec": "wwwroot\\app.css"
     },
     {
-      "Identity": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\wwwroot\\bootstrap\\bootstrap.min.css",
       "SourceId": "DensingMidterms",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\wwwroot\\",
       "BasePath": "_content/DensingMidterms",
       "RelativePath": "bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -93,10 +93,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\wwwroot\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "DensingMidterms",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\wwwroot\\",
       "BasePath": "_content/DensingMidterms",
       "RelativePath": "bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -112,10 +112,10 @@
       "OriginalItemSpec": "wwwroot\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\wwwroot\\favicon.png",
+      "Identity": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\wwwroot\\favicon.png",
       "SourceId": "DensingMidterms",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\wwwroot\\",
       "BasePath": "_content/DensingMidterms",
       "RelativePath": "favicon.png",
       "AssetKind": "All",

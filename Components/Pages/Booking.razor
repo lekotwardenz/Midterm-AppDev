@@ -1,0 +1,247 @@
+@page "/booking"
+@rendermode InteractiveServer
+@using DensingMidterms.Models
+
+<PageTitle>Tour Catalog &amp; Booking Planner - Atlas Escapes</PageTitle>
+
+<main class="tourism-layout">
+    <!-- Top Navigation -->
+    <header class="navbar">
+        <div class="nav-group left-links">
+            <a href="/">HOME</a>
+            <span class="dot-separator">•</span>
+            <a href="/booking" class="active-link">BOOKING</a>
+        </div>
+
+        <div class="nav-brand">
+            <a href="/"><h1>Atlas Escapes</h1></a>
+        </div>
+
+        <div class="nav-group right-links">
+            <a href="#experiences-catalog">BROWSE TOURS</a>
+            <span class="dot-separator">•</span>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </header>
+
+    <!-- Subpage Hero -->
+    <section class="sub-hero bg-booking-hero">
+        <div class="hero-content">
+            <h2>TOURS &amp; BOOKING PLANNER</h2>
+            <p>Customize your booking draft first, then explore curated tour experiences</p>
+        </div>
+    </section>
+
+    <!-- TOP SECTION: Booking Draft Builder, Saved Drafts & Start Planning -->
+    <section id="draft-builder" class="section-padding bg-light">
+        <div class="section-header">
+            <h3>1. Customize Your Booking Draft</h3>
+            <div class="divider"><span>♦</span><span>♦</span><span>♦</span></div>
+        </div>
+
+        <div class="booking-workspace">
+            <!-- Column 1: BookingDraft Configurator -->
+            <div class="booking-card">
+                <div class="card-header-serif">
+                    <h4>Trip Configuration</h4>
+                </div>
+
+                <div class="form-group">
+                    <label>Selected Tour Experience</label>
+                    <select class="form-control" value="@currentDraft.TourId" @onchange="OnTourChanged">
+                        @foreach (var tour in availableTours)
+                        {
+                            <option value="@tour.Id">@tour.Title — @tour.Country ($@tour.Price.ToString("N0") / guest)</option>
+                        }
+                    </select>
+                </div>
+
+                @if (SelectedTour != null)
+                {
+                    <div class="selected-tour-preview">
+                        <div class="preview-header">
+                            <strong>@SelectedTour.Title</strong>
+                            <span>@SelectedTour.DurationDays Days • @SelectedTour.Category</span>
+                        </div>
+                        <p>@SelectedTour.Description</p>
+                    </div>
+                }
+
+                <div class="form-group">
+                    <label>Number of Guests</label>
+                    <div class="guest-stepper">
+                        <button type="button" class="step-btn" @onclick="DecrementGuests">−</button>
+                        <span class="guest-count">@currentDraft.GuestCount @(currentDraft.GuestCount == 1 ? "Guest" : "Guests")</span>
+                        <button type="button" class="step-btn" @onclick="IncrementGuests">+</button>
+                    </div>
+                </div>
+
+                <div class="price-summary-box">
+                    <div class="summary-row">
+                        <span>Base Rate per Guest</span>
+                        <span>$@(SelectedTour?.Price.ToString("N2") ?? "0.00")</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Party Size</span>
+                        <span>× @currentDraft.GuestCount</span>
+                    </div>
+                    <div class="summary-total">
+                        <span>Estimated Total</span>
+                        <strong>$@currentDraft.TotalPrice.ToString("N2")</strong>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-primary-full" @onclick="SaveBookingDraft" disabled="@savingDraft">
+                    @(savingDraft ? "SAVING..." : "SAVE BOOKING DRAFT")
+                </button>
+            </div>
+
+            <!-- Column 2: Saved BookingDraft List -->
+            <div class="drafts-panel">
+                <h4>Saved Booking Drafts (@savedDrafts.Count)</h4>
+                <p class="panel-subtext">Your itinerary drafts saved in Supabase.</p>
+
+                @if (!savedDrafts.Any())
+                {
+                    <div class="empty-drafts">
+                        <p>No drafts saved yet. Configure your guest count and click <strong>Save Booking Draft</strong>.</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="drafts-list">
+                        @foreach (var draft in savedDrafts)
+                        {
+                            <div class="draft-item">
+                                <div class="draft-top">
+                                    <div>
+                                        <span class="draft-id">TOUR #@draft.TourId</span>
+                                        <h5>@draft.TourTitle</h5>
+                                    </div>
+                                    <button type="button" class="remove-btn" @onclick="() => RemoveDraft(draft)" title="Remove draft">✕</button>
+                                </div>
+                                <div class="draft-details">
+                                    <span>👤 @draft.GuestCount @(draft.GuestCount == 1 ? "Guest" : "Guests")</span>
+                                    <span>🕒 @draft.DraftCreated.ToString("MMM dd, h:mm tt")</span>
+                                </div>
+                                <div class="draft-bottom">
+                                    <span>Total Estimate:</span>
+                                    <strong>$@draft.TotalPrice.ToString("N2")</strong>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+
+            <!-- Column 3: Start Planning Box (Uses ContactMessage) -->
+            <div id="contact" class="contact-box">
+                <h3>Start planning</h3>
+
+                @if (messageSent)
+                {
+                    <div class="success-banner">
+                        <strong>Inquiry received</strong>
+                        <p>We saved your message for @contactDraft.Destination.</p>
+                        <button type="button" class="btn-outline-sm" @onclick="ResetContact">SEND ANOTHER</button>
+                    </div>
+                }
+                else
+                {
+                    <EditForm Model="@contactDraft" OnValidSubmit="HandleQuickContact" FormName="BookingContactForm">
+                        <input type="text" placeholder="Your name" @bind="contactDraft.Name" required />
+                        <input type="email" placeholder="Email" @bind="contactDraft.Email" required />
+                        <textarea placeholder="Where do you want to go?" rows="3" @bind="contactDraft.Destination" required></textarea>
+                        <button type="submit" class="btn-primary-pill" disabled="@savingContact">
+                            @(savingContact ? "SENDING..." : "SEND")
+                        </button>
+                    </EditForm>
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Bar for TourExperiences -->
+    <section id="experiences-catalog" class="filter-bar-section">
+        <div class="filter-container">
+            <div class="category-pills">
+                @foreach (var cat in Categories)
+                {
+                    <button type="button" class="pill-btn @(selectedCategory == cat ? "active" : "")"
+                            @onclick="() => selectedCategory = cat">
+                        @cat
+                    </button>
+                }
+            </div>
+
+            <div class="filter-actions">
+                <input type="text" class="search-box-input" placeholder="Search country or tour..."
+                       @bind="searchQuery" @bind:event="oninput" />
+                <label class="fav-toggle">
+                    <input type="checkbox" @bind="onlyFavorites" />
+                    <span>♥ Saved (@availableTours.Count(t => t.IsFavorite))</span>
+                </label>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Experiences Selection Grid (Uses TourExperience) -->
+    <section class="section-padding">
+        <div class="section-header">
+            <h3>2. Choose Your Experience</h3>
+            <div class="divider"><span>♦</span><span>♦</span><span>♦</span></div>
+        </div>
+
+        @if (!FilteredTours.Any())
+        {
+            <div class="empty-state">
+                <p>No tours match your current filter.</p>
+                <button type="button" class="btn-primary" @onclick="ResetFilters">RESET FILTERS</button>
+            </div>
+        }
+        else
+        {
+            <div class="tours-grid">
+                @foreach (var tour in FilteredTours)
+                {
+                    <div class="tour-card @(currentDraft.TourId == tour.Id ? "selected-card" : "")">
+                        <div class="tour-image @tour.ImageClass">
+                            <span class="category-tag">@tour.Category</span>
+                            <button type="button" class="fav-btn @(tour.IsFavorite ? "is-fav" : "")"
+                                    @onclick="() => ToggleFavorite(tour)"
+                                    title="Save to favorites">
+                                @(tour.IsFavorite ? "♥" : "♡")
+                            </button>
+                        </div>
+
+                        <div class="tour-body">
+                            <div class="tour-meta">
+                                <span>📍 @tour.Country</span>
+                                <span>⏳ @tour.DurationDays Days</span>
+                            </div>
+                            <h4>@tour.Title</h4>
+                            <p>@tour.Description</p>
+
+                            <div class="highlights-list">
+                                @foreach (var item in tour.Highlights)
+                                {
+                                    <span class="highlight-chip">✦ @item</span>
+                                }
+                            </div>
+
+                            <div class="tour-footer">
+                                <div class="price-block">
+                                    <small>PER GUEST</small>
+                                    <strong>$@tour.Price.ToString("N0")</strong>
+                                </div>
+                                <button type="button" class="btn-primary" @onclick="() => SelectTour(tour.Id)">
+                                    @(currentDraft.TourId == tour.Id ? "✓ SELECTED" : "SELECT TOUR")
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </section>
+</main>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\DensingMidterms.csproj": {}
+    "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\DensingMidterms.csproj": {}
   },
   "projects": {
-    "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\DensingMidterms.csproj": {
+    "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\DensingMidterms.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\DensingMidterms.csproj",
+        "projectUniqueName": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\DensingMidterms.csproj",
         "projectName": "DensingMidterms",
-        "projectPath": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\DensingMidterms.csproj",
+        "projectPath": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\DensingMidterms.csproj",
         "packagesPath": "C:\\Users\\L23Y16W18\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\L23Y16W18\\Documents\\midterms\\DensingMidterms\\obj\\",
+        "outputPath": "C:\\Users\\L23Y16W18\\Downloads\\AppDev-Finals\\Midterm-AppDev\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Supabase": {
+              "target": "Package",
+              "version": "[8.12.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
